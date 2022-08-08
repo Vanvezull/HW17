@@ -62,27 +62,27 @@ class MovieView(Resource):
 
 
 @director_ns.route('/')  # Представление для получения всех режиссеров
-class MoviesView(Resource):
+class DirectorView(Resource):
     def get(self):
-        return DirectorSchema(many=True).dump(Movie.query.all()), 200
+        return DirectorSchema(many=True).dump(Director.query.all()), 200
 
 
 @director_ns.route('/<int:id>')  # Представление для получения режиссера по id
-class MovieView(Resource):
+class DirectorView(Resource):
     def get(self, id):
-        return DirectorSchema().dump(Movie.query.get(id)), 201
+        return DirectorSchema().dump(Director.query.get(id)), 201
 
 
 @genre_ns.route('/') # Представление для получения всех жанров
-class MoviesView(Resource):
+class GenreView(Resource):
     def get(self):
-        return GenresSchema(many=True).dump(Movie.query.all()), 200
+        return GenresSchema(many=True).dump(Genre.query.all()), 200
 
 
 @genre_ns.route('/<int:id>') # Представление для получения жанра по id
-class MovieView(Resource):
+class GenreView(Resource):
     def get(self, id):
-        return GenresSchema().dump(Movie.query.get(id)), 201
+        return GenresSchema().dump(Genre.query.get(id)), 201
 
 
 if __name__ == '__main__':
